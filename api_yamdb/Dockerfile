@@ -5,22 +5,19 @@
 FROM python:3.7-slim
 
 # Запустить команду создания директории внутри контейнера
-RUN mkdir /app
+WORKDIR /app
 
-# Скопировать всё с локального компьютера
+# Скопировать с локального компьютера requirements.txt
 # в директорию /app.
-COPY . /app
+COPY requirements.txt .
 
 # Выполнить установку зависимостей внутри контейнера.
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements.txt --no-cache-dir
 
-# Скопировать содержимое директории /api_yamdb c локального компьютера
+# Скопировать проект с локального компьютера
 # в директорию /app.
-# COPY api_yamdb/ /app
-
-# Сделать директорию /app рабочей директорией. 
-WORKDIR /app
+COPY . .
 
 # Выполнить запуск сервера разработки при старте контейнера.
 CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ]
