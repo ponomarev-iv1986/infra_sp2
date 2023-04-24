@@ -18,7 +18,7 @@ iniconfig==2.0.0
 # isort==5.12.0
 mccabe==0.7.0
 packaging==23.0
-pep8-naming==0.13.3
+# pep8-naming==0.13.3
 pluggy==0.13.1
 py==1.11.0
 pycodestyle==2.9.1
