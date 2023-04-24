@@ -2,18 +2,18 @@
 # 3.7 — используемая версия Python.
 # slim — обозначение того, что образ имеет только необходимые компоненты для запуска,
 # он не будет занимать много места при развёртывании.
-FROM python:3.9-slim
+FROM python:3.7-slim
 
 # Запустить команду создания директории внутри контейнера
 RUN mkdir /app
 
-# Скопировать с локального компьютера файл зависимостей
+# Скопировать всё с локального компьютера
 # в директорию /app.
 COPY . /app
 
 # Выполнить установку зависимостей внутри контейнера.
-RUN pip3 install --upgrade pip
-RUN pip3 install -r /app/requirements.txt --no-cache-dir
+RUN pip install --upgrade pip
+RUN pip install -r /app/requirements.txt --no-cache-dir
 
 # Скопировать содержимое директории /api_yamdb c локального компьютера
 # в директорию /app.
